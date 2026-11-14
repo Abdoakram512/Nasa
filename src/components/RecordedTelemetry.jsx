@@ -190,6 +190,7 @@ export default function RecordedTelemetry() {
               ))}
             </dl>
             <ExperimentalForecast
+              contextKey={recordingId + ':' + simulateDropout}
               samples={record.samples}
               index={sampleIndex}
               isUnavailable={simulateDropout ? isInDropout : () => false}

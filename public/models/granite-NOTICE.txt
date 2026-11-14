@@ -1,0 +1,3 @@
+IBM Granite TinyTimeMixer 52-16-ft-l1-r2.1, Apache-2.0.
+Source: https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2/tree/0be095bc9724b47d1bb71cba47c3095b4d91f560
+Converted to fixed-shape ONNX with equivalent non-overlapping patching and a ten-step output.

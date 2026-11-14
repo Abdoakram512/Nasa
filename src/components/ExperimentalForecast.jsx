@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import weights from '../data/forecastWeights.json';
+import GraniteForecast from './GraniteForecast';
 
 const HORIZON = 10;
 const MODELS = [
@@ -36,7 +37,7 @@ export function forecast(samples, index, isUnavailable) {
   });
 }
 
-export default function ExperimentalForecast({ samples, index, isUnavailable }) {
+export default function ExperimentalForecast({ samples, index, isUnavailable, contextKey }) {
   const [open, setOpen] = useState(false);
   const rows = useMemo(() => open ? forecast(samples, index, isUnavailable) : null,
     [open, samples, index, isUnavailable]);
@@ -70,6 +71,9 @@ export default function ExperimentalForecast({ samples, index, isUnavailable }) 
         <p className="mt-2 text-xs text-[#C7D2E3]">
           Forecast needs 30 consecutive heart-rate readings. Move the slider to a point with a complete history.
         </p>
+      )}
+      {open && (
+        <GraniteForecast key={contextKey + ':' + index} samples={samples} index={index} isUnavailable={isUnavailable} />
       )}
     </details>
   );
