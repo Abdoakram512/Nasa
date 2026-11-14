@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from 'react';
+import { useEffect, useId, useMemo, useState } from 'react';
 import { assetPath } from '../utils/assetPath';
 
 const METRICS = [
@@ -17,6 +17,46 @@ const RECORDINGS = {
 
 function isInDropout(sample) {
   return sample && sample.elapsed_s >= DROPOUT_START_S && sample.elapsed_s < DROPOUT_END_S;
+}
+
+function getHeartRateChange(sample, previous, simulateDropout) {
+  if (!sample || !previous || sample.elapsed_s - previous.elapsed_s !== 1 ||
+      (simulateDropout && (isInDropout(sample) || isInDropout(previous)))) return null;
+  const current = sample.values.heart_rate;
+  const prior = previous.values.heart_rate;
+  if (!Number.isFinite(current) || !Number.isFinite(prior)) return null;
+  const change = current - prior;
+  return Math.abs(change) >= HEART_RATE_CHANGE_BPM ? change : null;
+}
+
+function getMissingCount(sample) {
+  return METRICS.filter(([metric]) => !Number.isFinite(sample.values[metric])).length;
+}
+
+function getEvents(samples, simulateDropout) {
+  const events = [];
+  let missingPeriod;
+  samples.forEach((sample, index) => {
+    const previous = samples[index - 1];
+    const missingLabel = simulateDropout && isInDropout(sample)
+      ? 'SIMULATED · Signal dropout'
+      : getMissingCount(sample) ? 'RECORDED · Missing readings' : null;
+    if (!missingLabel) {
+      missingPeriod = undefined;
+    } else if (missingPeriod?.label === missingLabel && sample.elapsed_s - previous.elapsed_s === 1) {
+      missingPeriod.end = sample.elapsed_s;
+    } else {
+      missingPeriod = { index, label: missingLabel, start: sample.elapsed_s, end: sample.elapsed_s };
+      events.push(missingPeriod);
+    }
+
+    const change = getHeartRateChange(sample, previous, simulateDropout);
+    if (change !== null) {
+      events.push({ index, label: `RECORDED · Heart rate ${previous.values.heart_rate} → ${sample.values.heart_rate} beats/min`,
+        start: sample.elapsed_s, end: sample.elapsed_s });
+    }
+  });
+  return events;
 }
 
 export default function RecordedTelemetry() {
@@ -58,26 +98,19 @@ export default function RecordedTelemetry() {
   const sample = record?.samples[sampleIndex];
   const previousSample = record?.samples[sampleIndex - 1];
   const dropout = simulateDropout && isInDropout(sample);
-  const heartRate = sample?.values.heart_rate;
-  const previousHeartRate = previousSample?.values.heart_rate;
-  // Compare consecutive observed samples only, including after a simulated gap.
-  const canCompareHeartRate = sample && previousSample &&
-    sample.elapsed_s - previousSample.elapsed_s === 1 &&
-    Number.isFinite(heartRate) && Number.isFinite(previousHeartRate) &&
-    !(simulateDropout && (dropout || isInDropout(previousSample)));
-  const heartRateChange = canCompareHeartRate ? heartRate - previousHeartRate : null;
-  const showHeartRateChange = heartRateChange !== null &&
-    Math.abs(heartRateChange) >= HEART_RATE_CHANGE_BPM;
-  const missingCount = sample
-    ? METRICS.filter(([metric]) => !Number.isFinite(sample.values[metric])).length
-    : 0;
+  const heartRateChange = getHeartRateChange(sample, previousSample, simulateDropout);
+  const missingCount = sample ? getMissingCount(sample) : 0;
+  const events = useMemo(() => getEvents(record?.samples ?? [], simulateDropout),
+    [record, simulateDropout]);
   const status = dropout ? 'Signal unavailable · Simulated dropout'
     : missingCount === METRICS.length ? 'Signal unavailable · All recorded readings are missing'
     : missingCount > 0 ? 'Some recorded readings are missing' : '';
 
   return (
     <details
-      onToggle={(event) => setIsOpen(event.currentTarget.open)}
+      onToggle={(event) => {
+        if (event.target === event.currentTarget) setIsOpen(event.currentTarget.open);
+      }}
       className="rounded-2xl border border-[#7AD7EA]/25 bg-[#132238]/90 p-4"
     >
       <summary className="cursor-pointer text-sm font-bold text-[#F4F7FC]">
@@ -136,7 +169,7 @@ export default function RecordedTelemetry() {
             />
             <div role="status" className="text-xs font-bold text-amber-300">{status}</div>
             <div role="status" aria-label="Heart rate change" className="text-xs text-[#C7D2E3]">
-              {showHeartRateChange && (
+              {heartRateChange !== null && (
                 <>
                   <strong>Heart rate changed {heartRateChange > 0 ? '+' : ''}{heartRateChange} beats/min in 1 s.</strong>
                   {' '}Demo threshold: {HEART_RATE_CHANGE_BPM} beats/min. For recording review only.
@@ -155,6 +188,29 @@ export default function RecordedTelemetry() {
                 </div>
               ))}
             </dl>
+            <details className="rounded-lg bg-[#0D1728] p-2">
+              <summary className="cursor-pointer text-sm font-bold text-[#F4F7FC]">
+                Event log ({events.length})
+              </summary>
+              {events.length ? (
+                <ul className="mt-2 max-h-56 space-y-1 overflow-y-auto">
+                  {events.map(({ index, label, start, end }) => (
+                    <li key={`${index}-${label}`}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSampleIndex(index);
+                          document.getElementById(inputId)?.focus();
+                        }}
+                        className="min-h-[44px] w-full rounded px-2 text-left text-xs text-[#C7D2E3] hover:bg-[#132238] focus-visible:outline-2 focus-visible:outline-[#7AD7EA]"
+                      >
+                        {start === end ? `${start} s` : `${start}–${end} s`} · {label}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              ) : <p className="mt-2 text-xs text-[#C7D2E3]">No events in this recording.</p>}
+            </details>
           </>
         ) : (
           <p role="status" className="text-xs text-[#C7D2E3]">
