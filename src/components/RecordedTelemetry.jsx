@@ -1,5 +1,6 @@
 import { useEffect, useId, useMemo, useState } from 'react';
 import { assetPath } from '../utils/assetPath';
+import ExperimentalForecast from './ExperimentalForecast';
 
 const METRICS = [
   ['heart_rate', 'Heart rate'],
@@ -188,6 +189,11 @@ export default function RecordedTelemetry() {
                 </div>
               ))}
             </dl>
+            <ExperimentalForecast
+              samples={record.samples}
+              index={sampleIndex}
+              isUnavailable={simulateDropout ? isInDropout : () => false}
+            />
             <details className="rounded-lg bg-[#0D1728] p-2">
               <summary className="cursor-pointer text-sm font-bold text-[#F4F7FC]">
                 Event log ({events.length})
