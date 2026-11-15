@@ -89,7 +89,7 @@ export default function NasaRiskScenariosModal({ isOpen, onClose, onSelectScenar
           <div>
             <div className="flex items-center gap-2 justify-end">
               <span className="px-2 py-0.5 rounded-full bg-[#7AD7EA]/15 text-[#7AD7EA] text-[10px] font-mono-tech font-bold border border-[#7AD7EA]/30">
-                NASA HRP CLINICAL VALIDATION
+                NASA HRP RESEARCH REFERENCES
               </span>
             </div>
             <h2 className="text-lg md:text-xl font-black text-[#F4F7FC] mt-1 font-cairo">
@@ -190,7 +190,7 @@ export default function NasaRiskScenariosModal({ isOpen, onClose, onSelectScenar
             {/* Diagnostic Finding */}
             <div className="p-2.5 rounded-xl bg-[#0D1728] border border-[rgba(180,210,235,0.1)]">
               <span className="text-[10px] text-[#7AD7EA] font-mono-tech block mb-0.5">
-                التشخيص الفضائي المستقل (DIAGNOSTIC FINDING):
+                ملخص السيناريو المُحاكى (SIMULATED SCENARIO)
               </span>
               <p className="text-[#F4F7FC] leading-relaxed text-[11px] font-cairo">
                 {selectedCase.detectedSymptom}
@@ -202,7 +202,7 @@ export default function NasaRiskScenariosModal({ isOpen, onClose, onSelectScenar
               <div className="flex items-center justify-between mb-0.5">
                 <span className="text-[10px] text-emerald-400 font-mono-tech font-bold flex items-center gap-1 font-cairo">
                   <CheckCircle2 size={12} />
-                  البروتوكول العلاجي المعتمد من ناسا:
+                  إجراءات ضمن سيناريو المحاكاة
                 </span>
                 <span className="text-[9px] font-mono-tech text-[#98A7BD]">{selectedCase.nasaStandardCode}</span>
               </div>
@@ -224,12 +224,12 @@ export default function NasaRiskScenariosModal({ isOpen, onClose, onSelectScenar
               className="px-4 py-2 rounded-xl bg-[#132238] hover:bg-[#182A44] text-[#F4F7FC] font-bold text-xs font-mono-tech transition-all flex items-center gap-1.5 border border-[rgba(180,210,235,0.14)]"
             >
               <FileText size={14} className="text-[#7AD7EA]" />
-              <span className="font-cairo">توليد حزمة بيانات هيوستن (50KB DSN)</span>
+              <span className="font-cairo">محاكاة تجهيز حزمة DSN</span>
             </button>
             {packetGenerated && (
               <span className="text-[11px] text-emerald-400 font-mono-tech font-bold flex items-center gap-1 font-cairo">
                 <CheckCircle2 size={13} />
-                تم تجهيز الحزمة المشفرة!
+                اكتملت محاكاة تجهيز الحزمة
               </span>
             )}
           </div>

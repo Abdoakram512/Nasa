@@ -126,7 +126,7 @@ export default function HomePage({
             {/* High-Concept Editorial Summary: Fills Space with Meaningful Substance */}
             <div className="space-y-2 mt-4 max-w-xl">
               <p className="text-[#DDE6F4] text-xs sm:text-sm lg:text-[14.5px] font-sans leading-relaxed font-normal">
-                Continuous interplanetary exploration aboard Spaceship 404 — integrating zero-latency autonomous medical diagnosis, clinical decision intelligence, and real-time deep space telemetry.
+                Explore a simulated mission aboard Spaceship 404. Review recorded vital signs, inspect signal interruptions, and compare experimental heart-rate forecasts.
               </p>
               <div className="flex flex-wrap items-center gap-3 text-[10px] sm:text-[11px] font-mono-tech text-[#98A7BD] pt-0.5">
                 <span className="flex items-center gap-1.5 text-[#33FF66]">
@@ -193,7 +193,7 @@ export default function HomePage({
                     if (onOpenAiDrawer) onOpenAiDrawer();
                   }}
                   className="px-3.5 py-2.5 rounded-xl bg-[#132238] hover:bg-[#182A44] text-[#7AD7EA] border border-[#7AD7EA]/25 font-bold text-xs tracking-wider transition-all flex items-center justify-center gap-1.5 hover:border-[#7AD7EA]/50"
-                  title="Launch AURA Flight Surgeon"
+                  title="Launch AURA Mission Guide"
                 >
                   <Bot size={14} />
                   <span>AURA</span>
@@ -266,7 +266,7 @@ export default function HomePage({
               SPACE ASTRONAUT
             </h1>
             <p className="text-[#C7D2E3] text-xs sm:text-sm font-sans leading-relaxed px-2 font-normal">
-              Continuous interplanetary exploration aboard Spaceship 404 — integrating zero-latency autonomous medical diagnosis, clinical decision intelligence, and real-time deep space telemetry.
+              Explore a simulated mission aboard Spaceship 404. Review recorded vital signs, inspect signal interruptions, and compare experimental heart-rate forecasts.
             </p>
           </div>
 
@@ -432,7 +432,7 @@ export default function HomePage({
         <div
           onClick={() => scrollToSection('readiness')}
           className="hidden xl:flex absolute bottom-2 left-1/2 -translate-x-1/2 z-40 items-center gap-2 cursor-pointer group py-1 px-3.5 rounded-full bg-[#07111F]/80 border border-[rgba(180,210,235,0.18)] hover:border-[#7AD7EA]/50 backdrop-blur-md transition-all shadow-lg hover:shadow-[0_0_20px_rgba(122,215,234,0.25)]"
-          title="Scroll down to explore Autonomous Deep Space Healthcare"
+          title="Scroll down to explore the mission health demo"
         >
           <div className="w-1.5 h-1.5 rounded-full bg-[#7AD7EA] animate-ping" />
           <span className="text-[10px] font-mono-tech text-[#C7D2E3] group-hover:text-[#7AD7EA] tracking-wider transition-colors">
@@ -460,11 +460,11 @@ export default function HomePage({
               MISSION READINESS & BIO-DIGITAL TWIN
             </span>
             <h2 className="font-titan text-2xl sm:text-3xl text-[#F4F7FC] tracking-wide uppercase">
-              AUTONOMOUS DEEP SPACE HEALTHCARE
+              SPACE MISSION HEALTH MONITORING
             </h2>
           </div>
           <p className="text-xs text-[#C7D2E3] max-w-md leading-relaxed">
-            During Mars Transit, communication delay to Earth exceeds 22 minutes. AstroVitals provides the onboard crew with zero-latency autonomous medical diagnosis and countermeasure execution.
+            Deep-space communication delays motivate local telemetry review. Explore the mission scenario, then open the Workspace to review recordings and compare forecasts in your browser.
           </p>
         </div>
 
@@ -498,10 +498,10 @@ export default function HomePage({
               <Bot size={20} />
             </div>
             <h3 className="text-sm font-bold text-[#F4F7FC] group-hover:text-[#7E78C9] transition-colors font-sans">
-              AURA Flight Surgeon
+              AURA Mission Guide
             </h3>
             <p className="text-[11px] text-[#C7D2E3] leading-relaxed">
-              Autonomous neural clinical copilot calibrated against NASA-STD-3001 and HRP evidence roadmaps for offline edge inference.
+              A scripted guide to the crew simulation and its research references.
             </p>
             <Link to="/ai-identity" className="inline-flex items-center gap-1 text-[11px] text-[#7AD7EA] font-bold hover:underline pt-1 min-h-[36px]">
               <span>Inspect AI Core</span>
@@ -524,10 +524,10 @@ export default function HomePage({
               Bio-Digital Twin
             </h3>
             <p className="text-[11px] text-[#C7D2E3] leading-relaxed">
-              Real-time Doppler echocardiogram, trabecular micro-architecture DEXA, and SANS optic sheath ultrasound monitors.
+              Simulated views of fluid shift, bone density and eye health, alongside recorded vital signs in the Workspace.
             </p>
             <Link to="/workspace" className="inline-flex items-center gap-1 text-[11px] text-[#7AD7EA] font-bold hover:underline pt-1 min-h-[36px]">
-              <span>View Live Telemetry</span>
+              <span>Open Telemetry Workspace</span>
               <ArrowRight size={12} />
             </Link>
           </motion.div>
@@ -570,7 +570,7 @@ export default function HomePage({
               DSN Blackout Simulation
             </h3>
             <p className="text-[11px] text-[#C7D2E3] leading-relaxed">
-              High-fidelity simulation of deep space radio latency, autonomous emergency overrides, and encrypted 50KB DSN packets.
+              Explore simulated radio delays and try a mock Deep Space Network transmission.
             </p>
             <Link to="/how-it-works" className="inline-flex items-center gap-1 text-[11px] text-[#7AD7EA] font-bold hover:underline pt-1 min-h-[36px]">
               <span>How It Works</span>
@@ -687,7 +687,7 @@ export default function HomePage({
               READY TO COMMENCE MISSION READINESS EVALUATION?
             </h3>
             <p className="text-xs text-[#C7D2E3] max-w-lg leading-relaxed">
-              Launch the full 3D interactive Zero-G cockpit to inspect astronaut vitals, review NASA standard threshold rules, and simulate emergency interventions.
+              Launch the full 3D interactive Zero-G cockpit to inspect astronaut vitals, review recorded vital signs, and simulate a signal interruption.
             </p>
           </div>
 

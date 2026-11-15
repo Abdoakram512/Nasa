@@ -23,7 +23,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-[11px] text-[#C7D2E3] leading-relaxed">
-            Autonomous Deep Space Medical Platform & Clinical Decision Support System (CDSS) for long-duration crewed missions to Mars.
+            A NASA Space Apps prototype for vital-sign review in a simulated mission to Mars.
           </p>
           <div className="flex items-center gap-2 pt-1">
             <span className="px-2 py-0.5 rounded-full bg-[#7AD7EA]/15 text-[#7AD7EA] text-[9px] font-mono-tech border border-[#7AD7EA]/30">
@@ -48,10 +48,10 @@ export default function Footer() {
               <Link to="/about" className="text-[#C7D2E3] hover:text-[#7AD7EA] transition-colors">About AstroVitals</Link>
             </li>
             <li>
-              <Link to="/features" className="text-[#C7D2E3] hover:text-[#7AD7EA] transition-colors">Clinical Features</Link>
+              <Link to="/features" className="text-[#C7D2E3] hover:text-[#7AD7EA] transition-colors">Mission Features</Link>
             </li>
             <li>
-              <Link to="/ai-identity" className="text-[#C7D2E3] hover:text-[#7AD7EA] transition-colors">AURA AI Flight Surgeon</Link>
+              <Link to="/ai-identity" className="text-[#C7D2E3] hover:text-[#7AD7EA] transition-colors">AURA Mission Guide</Link>
             </li>
           </ul>
         </div>
@@ -83,7 +83,7 @@ export default function Footer() {
             DATA ARCHIVES
           </h4>
           <p className="text-[10px] text-[#98A7BD] leading-relaxed">
-            Validated against NASA Life Sciences Data Archive (LSDA), Open Science Data Repository (OSDR), and Human Research Program (HRP) Evidence Reports.
+            NASA archives and HRP reports provide mission context. Recorded telemetry comes from PhysioNet BIDMC.
           </p>
           <div className="pt-1 flex items-center gap-2 text-[10px] text-[#7AD7EA] font-mono-tech">
             <Radio size={12} className="animate-pulse" />
@@ -96,7 +96,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto pt-6 border-t border-[rgba(180,210,235,0.08)] flex flex-col sm:flex-row items-center justify-between gap-3 text-[10px] font-mono-tech">
         <span className="text-[#98A7BD]">© 2026 ASTROVITALS • ARTEMIS VII MARS TRANSIT MISSION</span>
         <div className="flex items-center gap-4 text-[#98A7BD]">
-          <span>ORION / STARSHIP FLIGHT SURGEON CORE</span>
+          <span>SIMULATED MISSION</span>
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
         </div>
       </div>

@@ -9,67 +9,42 @@ export default function HowItWorksPage() {
   const steps = [
     {
       num: '01',
-      title: 'Multimodal Sensor Ingestion',
-      subtitle: 'Body Area Network & Point-of-Care Hardware',
-      desc: 'Astronauts wear Astroskin smart garments capturing continuous 3-lead ECG, HRV RMSSD, respiration, and blood pressure. Point-of-care devices (portable ultrasound Butterfly iQ, i-STAT blood/urine analyzers) feed diagnostic data directly into the spacecraft avionics data bus.',
-      details: [
-        'Continuous raw ECG & baroreceptor vagal tone monitoring',
-        'Jugular venous Doppler echo velocity (flow rate ~84 cm/s)',
-        'Optic nerve sheath diameter (ONSD) ultrasound scans',
-        'Urinary calcium turnover analysis for hypercalciuria'
-      ],
+      title: "Load a recorded session",
+      subtitle: "PhysioNet BIDMC",
+      desc: "Open the Workspace and select an Earth ICU recording.",
+      details: ["Heart rate, pulse, breathing rate and oxygen saturation", "Original timing, units and missing readings"],
       icon: Activity
     },
     {
       num: '02',
-      title: 'Local Edge Inference & Baseline Drift Tracking',
-      subtitle: 'Zero Earth Latency Avionics Engine',
-      desc: 'The onboard neural core runs localized heuristics grounded in the NASA Integrated Medical Model (IMM) and Human Research Program evidence base. It continuously compares telemetry against each astronaut’s pre-flight baseline (Day 1) to identify physiological degradation.',
-      details: [
-        'Real-time calculation of cephalad fluid shift index (0-100%)',
-        'Trabecular bone mineral density (BMD) decay projection (-1.2%/30 days)',
-        'Cardiovascular deconditioning index & plasma deficit calculation',
-        'NASA-STD-3001 threshold rule triggers (Warnings at >15% drift)'
-      ],
-      icon: Cpu
-    },
-    {
-      num: '03',
-      title: 'Autonomous Clinical Decision Triage',
-      subtitle: 'ExMC Clinical Decision Support System (AURA)',
-      desc: 'When telemetry breaches NASA-STD-3001 caution or alert bounds, AURA automatically conducts diagnostic triage. It establishes severity classifications (Nominal, Caution, Critical Tier 1) and formulates medical recommendations without waiting for Ground Control approval.',
-      details: [
-        'Cardiovascular decompensation triage (Tier 1 Orthostatic Intolerance)',
-        'SANS optic disc edema risk evaluation (Tier 1 Critical Vision Risk)',
-        'Renal nephrolithiasis stone precipitation risk estimation (Tier 2 Warning)',
-        'Autonomous Emergency Override during Solar Particle Events & Blackouts'
-      ],
+      title: "Review signal quality",
+      subtitle: "Event log",
+      desc: "Jump to recorded changes and missing readings, or enable a labeled dropout simulation.",
+      details: ["Recorded and simulated events carry source labels", "The heart-rate change marker uses a demo threshold"],
       icon: ShieldAlert
     },
     {
+      num: '03',
+      title: "Compare forecasts",
+      subtitle: "Browser-based experiments",
+      desc: "Run Ridge, the MLP or IBM Granite TinyTimeMixer and review their estimates alongside the last-reading baseline.",
+      details: ["Ten-second heart-rate forecasts", "Recorded future values appear when available"],
+      icon: Cpu
+    },
+    {
       num: '04',
-      title: 'Closed-Loop Countermeasure Prescription',
-      subtitle: 'Physical & Pharmacological Prescriptions',
-      desc: 'AURA formulates targeted, actionable daily intervention schedules. The crew receives calibrated prescriptions adjusting exercise regimens, lower body negative pressure decompression sessions, and nutritional/electrolyte intake.',
-      details: [
-        'ARED hydraulic deadlift & squat load adjustment (+12.5% loading)',
-        'Lower Body Negative Pressure (LBNP) chamber sessions (-30 mmHg, 30m)',
-        'Isotonic electrolyte fluid restoration (750ml–1000ml oral rehydration)',
-        'Habitat Solid-State Lighting (SLA) spectral tuning for circadian rhythm'
-      ],
+      title: "Explore the mission",
+      subtitle: "Crew and environment simulation",
+      desc: "Use the 3D viewport and planet pages to explore the context of a simulated journey.",
+      details: ["Simulated crew telemetry", "AURA provides scripted explanations"],
       icon: Zap
     },
     {
       num: '05',
-      title: 'Mission Trajectory Feedback & DSN Uplink',
-      subtitle: 'Closed-Loop Outcome Verification',
-      desc: 'Post-intervention telemetry verifies whether physiological stabilization criteria have been fulfilled. As soon as the DSN radio window re-establishes, AURA compiles an encrypted 50KB mission medical packet to synchronize with Houston Mission Control.',
-      details: [
-        'Real-time verification of HRV vagal tone recovery and blood pressure rebound',
-        'Compilation of compact 50KB telemetry packets for Deep Space Network transmission',
-        'Automated longitudinal medical logging across the 500-day journey',
-        'Continuous crew readiness score updates prior to Mars Orbital Insertion'
-      ],
+      title: "Try mission operations",
+      subtitle: "Local demonstrations",
+      desc: "Explore communication blackout, a simulated countermeasure and a mock DSN transmission.",
+      details: ["Mission actions update the demo locally"],
       icon: Radio
     }
   ];
@@ -80,13 +55,13 @@ export default function HowItWorksPage() {
       <section className="p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-[32px] cinematic-card-bg border border-[rgba(180,210,235,0.14)] shadow-2xl relative overflow-hidden">
         <div className="relative z-10 max-w-2xl space-y-2 sm:space-y-3">
           <span className="text-[10px] font-mono-tech text-[#7AD7EA] uppercase tracking-widest block">
-            HOW IT WORKS • END-TO-END CLINICAL ARCHITECTURE
+            HOW IT WORKS • MISSION HEALTH DEMO
           </span>
           <h1 className="font-titan text-2xl sm:text-4xl lg:text-5xl text-[#F4F7FC] uppercase leading-tight tracking-wide">
-            THE AUTONOMOUS CLINICAL WORKFLOW
+            FROM RECORDING TO REVIEW
           </h1>
           <p className="text-xs sm:text-sm text-[#C7D2E3] leading-relaxed">
-            From biosensors on the astronaut’s body to real-time neural diagnosis and closed-loop countermeasure execution.
+            Follow the same workflow available in the Workspace.
           </p>
         </div>
       </section>
@@ -151,7 +126,7 @@ export default function HowItWorksPage() {
             EXPERIENCE THE PLATFORM IN ACTION
           </h3>
           <p className="text-xs text-[#C7D2E3] mt-1">
-            Access the live Mission Control Workspace to interact with the 3D astronaut and execute countermeasures.
+            Open the Mission Control Workspace to explore the crew simulation and review recorded vital signs.
           </p>
         </div>
         <div className="flex items-center gap-3">
@@ -165,7 +140,7 @@ export default function HowItWorksPage() {
             to="/ai-identity"
             className="px-6 py-2.5 rounded-full bg-[#182A44] text-[#F4F7FC] border border-[#7AD7EA]/30 font-bold text-xs tracking-wider transition-all hover:bg-[#1f3657]"
           >
-            AURA SURGEON
+            AURA Mission Guide
           </Link>
         </div>
       </section>

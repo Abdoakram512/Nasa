@@ -13,9 +13,8 @@ export default function AiFlightSurgeonDrawer({
   const [messages, setMessages] = useState([
     {
       sender: 'ai',
-      text: `مرحباً بك، سيادة القائد. أنا نظام AURA (Autonomous Ultra-Deep-Space Resiliency Agent)، طبيب الفضاء الجوي المستقل على متن مركبة أوريون. أعمل عبر النواة العصبية المحلية دون الحاجة لاتصال الأرض، وأراقب قياساتك الحيوية لحظة بلحظة وفق معايير NASA-STD-3001. كيف يمكنني مساندة جاهزيتك للمهمة اليوم؟`,
+      text: `أهلًا، أنا AURA، دليل المهمة. الردود هنا مُعدّة مسبقًا وبتشرح مؤشرات الطاقم في المحاكاة. تقدر تجرّب موديلات توقع النبض في Experimental forecast داخل Workspace.`,
       citations: ['NASA-STD-3001 Vol 1', 'HRP-BHP-2026', 'ExMC Local Core'],
-      prescription: null
     }
   ]);
   const [inputQuery, setInputQuery] = useState('');
@@ -28,11 +27,11 @@ export default function AiFlightSurgeonDrawer({
     },
     {
       title: "تقييم انتقال السوائل الرأسي ومتلازمة SANS",
-      query: "حلل خطر انتفاخ العصب البصري (SANS) ومؤشر انتقال السوائل للرأس حالياً."
+      query: "إيه اللي بتعرضه بطاقة SANS في محاكاة الطاقم؟"
     },
     {
       title: "توليد تعديل تدريب ARED وتوازن الكالسيوم",
-      query: "استخرج وصفة تمرين الأثقال الفضائية ARED وجرعة المحاليل لمنع تآكل العظام."
+      query: "إزاي سيناريو المهمة بيعرض كثافة العظام وجهاز ARED؟"
     }
   ];
 
@@ -51,36 +50,23 @@ export default function AiFlightSurgeonDrawer({
     setTimeout(() => {
       let aiResponse = '';
       let citations = [];
-      let prescription = null;
 
       const q = query.toLowerCase();
       if (q.includes('hrv') || q.includes('قلب') || q.includes('نبض') || q.includes('heart') || q.includes('variability')) {
-        aiResponse = `تحليل القياسات الحيوية (اليوم ${telemetry.missionDay}): معدل تقلب نبضك (HRV) حالياً هو ${telemetry.currentHRV} ms (بانحراف قدره ${telemetry.hrvDriftPct}% عن خط الأساس). في انعدام الجاذبية، يصعد نحو لترين من سوائل الجسم نحو الصدر والرأس؛ مما يُلغي التدرج الهيدروستاتيكي الطبيعي ويثبط نغمة العصب الحائر الباراسيمبثاوي. نظراً لتأخير الاتصال بالأرض (${telemetry.commDelayMinutes} دقيقة)، نوصي بتفعيل التدخل الفوري: تمرين دراجة CEVIS لمدة 20 دقيقة، مع شرب 750 مل محلول أملاح متوازن الضغط الأسموزي.`;
+        aiResponse = `في محاكاة اليوم ${telemetry.missionDay}، تقلب معدل القلب (HRV) للطاقم هو ${telemetry.currentHRV} ms. استخدم الـWorkspace لمراجعة تسجيلات القلب الفعلية وتجربة التوقعات.`;
         citations = ['NASA-STD-3001 Vol 1', 'HRP-47052', 'LSDA-ISS-CV'];
-        prescription = {
-          title: "بروتوكول دعم الدورة وتوازن البلازما",
-          items: ["20 دقيقة CEVIS عند 75% VO2 max", "شرب 750 مل محلول كهارل متوازن", "30 دقيقة ضغط سلبي سفلي LBNP (-30 mmHg)"]
-        };
       } else if (q.includes('عظام') || q.includes('bone') || q.includes('ared') || q.includes('calcium') || q.includes('كالسيوم')) {
-        aiResponse = `التقييم العظمي والاستقلابي: نسبة بقاء كثافة العظام (BMD) حالياً هي ${telemetry.bmdRetention}% (إجمالي الفقد: -${telemetry.bmdLoss}%). وفق بروتوكول LSDA-BMD-ISS-04، تم رفع أحمال تدريب القرفصاء والرفعة الميتة على جهاز المقاومة الهيدروليكي ARED بنسبة 12.5%، مع زيادة الحصة المائية اليومية بمقدار 600 مل لتخفيف تركيز الكالسيوم في البول وتجنب الحصوات الكلوية.`;
+        aiResponse = `مؤشر كثافة العظام في سيناريو الطاقم هو ${telemetry.bmdRetention}%. تقدر تستكشف محاكاة جهاز المقاومة من الـWorkspace.`;
         citations = ['LSDA-BMD-ISS-04', 'NASA HRP Bone Evidence', 'NASA-STD-3001'];
-        prescription = {
-          title: "بروتوكول ARED لحماية العظام الإسفنجية",
-          items: ["زيادة أحمال ARED Squat بنسبة +12.5%", "جرعة 800 IU فيتامين D3 + 100mcg K2", "+600 مل ترطيب إضافي لحماية الكلى"]
-        };
       } else if (q.includes('sans') || q.includes('عين') || q.includes('بصر') || q.includes('vision') || q.includes('optic') || q.includes('سوائل')) {
-        aiResponse = `مصفوفة فحص SANS والضغط القحفي: يبلغ قطر غمد العصب البصري (ONSD) حالياً 5.6 مم مع مؤشر احتقان رأسي +${telemetry.fluidShiftIndex}%. نوصي ببدء جلسة تفريغ الضغط الرأسي عبر جهاز الضغط السالب للأطراف السفلية (LBNP) لمدة 30 دقيقة لسحب لتر من الدم نحو الساقين واستعادة الضغط الطبيعي لشبكية العين.`;
+        aiResponse = `مؤشر انتقال السوائل نحو الرأس في سيناريو الطاقم هو ${telemetry.fluidShiftIndex}%. بطاقة SANS في الـWorkspace بتعرض سياق الحالة المُحاكاة.`;
         citations = ['HRP-SANS-4819', 'NASA-STD-3001 Rev B'];
-        prescription = {
-          title: "بروتوكول LBNP لتخفيف ضغط الرأس والعين",
-          items: ["جلسة LBNP لمدة 30 دقيقة عند -30 mmHg", "فحص قاع العين بالسونار المحمول", "ارتداء عدسات تصحيح انكسار مؤقتة"]
-        };
       } else {
-        aiResponse = `تشخيص نظام AURA الطبي (اليوم ${telemetry.missionDay}): مؤشر حيوية الطاقم العام هو ${telemetry.overallHealthIndex}/100، والحالة النشطة هي (${telemetry.riskLevel}). وضع الاتصال بالأرض: ${isCommBlackout ? 'انقطاع كامل (تفعيل الاستقلالية السريرية التامة)' : 'تأخير لاسلكي متوقع'}. جميع التدخلات موجهة بالذكاء الاصطناعي السريري وفق مكتبة معايير ناسا الفضائية.`;
+        aiResponse = `دي لقطة من محاكاة اليوم ${telemetry.missionDay}. حالة الاتصال في السيناريو: ${isCommBlackout ? 'انقطاع مُحاكى' : 'الاتصال متاح في السيناريو'}. اسأل عن القلب أو العظام أو العين لاستكشاف الردود الجاهزة.`;
         citations = ['NASA-STD-3001', 'NASA IMM Model'];
       }
 
-      setMessages([...newMessages, { sender: 'ai', text: aiResponse, citations, prescription }]);
+      setMessages([...newMessages, { sender: 'ai', text: aiResponse, citations }]);
       setIsGenerating(false);
       spaceAudio.playBeep(1600, 0.1);
     }, 600);
@@ -116,14 +102,14 @@ export default function AiFlightSurgeonDrawer({
           </div>
           <div className="text-right">
             <div className="flex items-center gap-2">
-              <h3 className="text-sm font-bold text-[#F4F7FC] tracking-wider font-titan">AURA AI SURGEON</h3>
+              <h3 className="text-sm font-bold text-[#F4F7FC] tracking-wider font-titan">AURA Mission Guide</h3>
               <span className="text-[9px] px-2 py-0.5 rounded-full bg-[#7AD7EA]/15 text-[#7AD7EA] border border-[#7AD7EA]/40 font-mono-tech">
                 ExMC CDSS
               </span>
             </div>
             <div className="text-[10px] text-[#98A7BD] font-mono-tech flex items-center gap-1.5 mt-0.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#7AD7EA] animate-pulse" />
-              <span>{isCommBlackout ? 'AUTONOMOUS LOCAL NEURAL CORE' : 'EDGE CLINICAL TELEMETRY ACTIVE'}</span>
+              <span>{isCommBlackout ? 'SIMULATED BLACKOUT' : 'CREW SIMULATION'}</span>
             </div>
           </div>
         </div>
@@ -165,7 +151,7 @@ export default function AiFlightSurgeonDrawer({
       <div className="p-3 border-b border-[rgba(180,210,235,0.1)] bg-[#07111F]/80">
         <div className="text-[10px] text-[#98A7BD] font-mono-tech mb-2 flex items-center gap-1 text-right">
           <Sparkles size={11} className="text-[#7AD7EA]" />
-          <span>استفسارات سريرية فورية (CLINICAL INQUIRIES)</span>
+          <span>أسئلة عن محاكاة المهمة</span>
         </div>
         <div className="flex flex-col gap-1.5">
           {quickPrompts.map((p, idx) => (
@@ -197,42 +183,6 @@ export default function AiFlightSurgeonDrawer({
             >
               <p className="leading-relaxed text-[11px] font-cairo">{msg.text}</p>
 
-              {/* Prescription Deck Card if generated by AI */}
-              {msg.prescription && (
-                <div className="mt-3 p-3 rounded-xl bg-[#07111F] border border-[#7AD7EA]/40 text-right">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-bold text-[#7AD7EA] font-titan tracking-wider">
-                      {msg.prescription.title}
-                    </span>
-                    <Zap size={13} className="text-[#7AD7EA]" />
-                  </div>
-                  <ul className="space-y-1 mb-2.5 text-[10px] text-[#C7D2E3] font-cairo">
-                    {msg.prescription.items.map((it, i) => (
-                      <li key={i} className="flex items-center gap-1.5 justify-end">
-                        <span>{it}</span>
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#7AD7EA]" />
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* One-click Execute Protocol Button */}
-                  {!countermeasureApplied ? (
-                    <button
-                      onClick={onApplyCountermeasure}
-                      className="w-full py-2 px-3 rounded-lg bg-gradient-to-r from-[#E4783B] to-[#C86026] hover:opacity-90 text-white font-black text-[11px] font-cairo transition-all shadow-[0_0_15px_rgba(228,120,59,0.35)] flex items-center justify-center gap-1.5"
-                    >
-                      <Zap size={13} />
-                      <span>تطبيق هذه الوصفة السريرية فوراً</span>
-                    </button>
-                  ) : (
-                    <div className="py-1.5 px-2 rounded-lg bg-emerald-950/80 border border-emerald-500/50 flex items-center justify-center gap-1.5 text-[10px] font-bold text-emerald-300">
-                      <CheckCircle2 size={13} className="text-emerald-400" />
-                      <span>تم تطبيق البروتوكول واستقرار المؤشرات الحيوية!</span>
-                    </div>
-                  )}
-                </div>
-              )}
-
               {/* Citations Footer */}
               {msg.citations && msg.citations.length > 0 && (
                 <div className="mt-2.5 pt-2 border-t border-[rgba(180,210,235,0.1)] flex flex-wrap gap-1 justify-end">
@@ -252,7 +202,7 @@ export default function AiFlightSurgeonDrawer({
 
         {isGenerating && (
           <div className="flex items-center gap-2 text-[#7AD7EA] text-xs font-mono-tech justify-end">
-            <span>AURA is generating clinical evaluation...</span>
+            <span>Loading the scripted mission response…</span>
             <span className="w-2 h-2 rounded-full bg-[#7AD7EA] animate-ping" />
           </div>
         )}

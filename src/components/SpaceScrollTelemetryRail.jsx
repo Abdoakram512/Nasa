@@ -9,7 +9,7 @@ export default function SpaceScrollTelemetryRail() {
   const milestones = [
     { id: 'hero', label: '01 // ORBITAL INSERTION', short: '01', alt: '400 KM' },
     { id: 'readiness', label: '02 // BIO-DIGITAL TWIN', short: '02', alt: '12,000 KM' },
-    { id: 'features', label: '03 // CLINICAL PILLARS', short: '03', alt: '45,000 KM' },
+    { id: 'features', label: '03 // MISSION FEATURES', short: '03', alt: '45,000 KM' },
     { id: 'ai-preview', label: '04 // AURA AI COPILOT', short: '04', alt: '250,000 KM' },
     { id: 'cockpit-cta', label: '05 // DEEP SPACE OPS', short: '05', alt: 'MARS TRANSIT' }
   ];

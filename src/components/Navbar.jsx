@@ -122,14 +122,14 @@ export default function Navbar({
           <span className="truncate max-w-[85px]">{commanderName || 'EXPLORER'}</span>
         </button>
 
-        {/* Quick Launch AURA AI Surgeon */}
+        {/* Quick Launch AURA Mission Guide */}
         <button
           onClick={() => {
             spaceAudio.playChirp();
             if (onOpenAiDrawer) onOpenAiDrawer();
           }}
           className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#7AD7EA]/15 hover:bg-[#7AD7EA]/25 text-[#7AD7EA] border border-[#7AD7EA]/40 font-mono-tech text-[10px] font-bold transition-all shadow-[0_0_15px_rgba(122,215,234,0.2)] hover:scale-105 min-h-[36px]"
-          aria-label="Launch AURA AI Surgeon Drawer"
+          aria-label="Launch AURA Mission Guide Drawer"
         >
           <Bot size={13} />
           <span>AURA AI</span>
@@ -276,7 +276,7 @@ export default function Navbar({
               className="w-full min-h-[48px] py-3 rounded-xl bg-gradient-to-r from-[#E4783B] to-[#d46a30] text-[#07111F] font-bold text-xs tracking-wider flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(228,120,59,0.35)] active:scale-95 transition-all"
             >
               <Bot size={16} />
-              <span>LAUNCH AURA FLIGHT SURGEON</span>
+              <span>LAUNCH AURA Mission Guide</span>
             </button>
 
             <div className="flex items-center justify-between text-[11px] text-[#98A7BD] px-2 font-mono-tech">

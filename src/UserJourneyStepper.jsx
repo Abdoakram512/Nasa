@@ -44,7 +44,7 @@ export const MISSION_PHASES = [
     subtitle: 'Autonomous Protocol • Mars Orbit',
     badge: 'Mars Arrival • Day 500',
     image: assetPath('mars_planet.jpg'),
-    description: 'نجاح بروتوكول الذكاء الاصطناعي (ARED + LBNP + أملاح). الرائد يصل لمدار المريخ بكامل لياقته واستقرار مؤشراته.',
+    description: 'نهاية الرحلة المُحاكاة عند مدار المريخ. راجع مؤشرات الطاقم في لوحة المهمة.',
     icon: CheckCircle2,
     telemetry: { hr: 68, hrv: 56, bmd: 95.8, delay: 22.4, status: 'MISSION SUCCESS', color: '#10B981' }
   }

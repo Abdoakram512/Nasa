@@ -19,13 +19,13 @@ export default function ContactPage() {
     }
 
     spaceAudio.playChirp();
-    setStatus({ state: 'sending', message: 'Encoding 50KB DSN Telemetry Packet...' });
+    setStatus({ state: 'sending', message: 'Running transmission simulation...' });
 
     setTimeout(() => {
       const fakeTxHash = 'DSN-2026-TX-' + Math.random().toString(36).substring(2, 9).toUpperCase();
       setStatus({
         state: 'success',
-        message: 'Transmission successfully packaged and dispatched into Deep Space Network queue!',
+        message: 'Simulation complete. Your message stays in this browser.',
         txHash: fakeTxHash
       });
       spaceAudio.playBeep(1800, 0.15);
@@ -45,7 +45,7 @@ export default function ContactPage() {
             GROUND CONTROL & MISSION CONTACT
           </h1>
           <p className="text-xs sm:text-sm text-[#C7D2E3] leading-relaxed max-w-2xl">
-            Dispatch queries, evaluate the NASA Space Apps submission, or transmit clinical advisory packets to the AstroVitals project team and autonomous avionics core.
+            Try a mock mission message. This form runs locally as part of the demo.
           </p>
         </div>
       </section>
@@ -114,7 +114,7 @@ export default function ContactPage() {
                 rows={4}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Enter technical observations, evaluation notes, or clinical inquiries..."
+                placeholder="Enter a sample mission message..."
                 className="w-full bg-[#0D1728] border border-[rgba(180,210,235,0.14)] focus:border-[#7AD7EA] rounded-xl px-4 py-2.5 text-xs text-[#F4F7FC] placeholder-[#98A7BD] outline-none transition-all resize-none"
               />
             </div>
@@ -144,7 +144,7 @@ export default function ContactPage() {
               className="w-full py-3 rounded-xl bg-gradient-to-r from-[#E4783B] to-[#d46a30] hover:opacity-95 text-[#07111F] font-bold text-xs tracking-wider transition-all shadow-[0_0_20px_rgba(228,120,59,0.35)] flex items-center justify-center gap-2 disabled:opacity-50"
             >
               <Send size={14} />
-              <span>{status.state === 'sending' ? 'PACKAGING TRANSMISSION...' : 'TRANSMIT VIA DEEP SPACE NETWORK'}</span>
+              <span>{status.state === 'sending' ? 'SIMULATING TRANSMISSION...' : 'SIMULATE TRANSMISSION'}</span>
             </button>
           </form>
         </div>
@@ -167,8 +167,8 @@ export default function ContactPage() {
                 <span className="text-[#F4F7FC]">Goldstone • Madrid • Canberra</span>
               </div>
               <div className="flex justify-between border-b border-[rgba(180,210,235,0.1)] pb-1">
-                <span>PAYLOAD ENCRYPTION</span>
-                <span className="text-[#7AD7EA]">AES-256-GCM DSN Standard</span>
+                <span>TRANSMISSION MODE</span>
+                <span className="text-[#7AD7EA]">Local simulation</span>
               </div>
               <div className="flex justify-between border-b border-[rgba(180,210,235,0.1)] pb-1">
                 <span>SIMULATED LATENCY</span>
@@ -184,7 +184,7 @@ export default function ContactPage() {
           <div className="p-6 rounded-[28px] bg-[#132238] border border-[rgba(180,210,235,0.14)] space-y-3">
             <h3 className="font-titan text-sm text-[#F4F7FC] uppercase">PROJECT REPOSITORY & DATA</h3>
             <p className="text-[11px] text-[#C7D2E3] leading-relaxed">
-              Developed for the NASA Space Apps Challenge 2026. Codebase incorporates NASA Open Science Data Repository (OSDR) pipelines and Human Research Program evidentiary baselines.
+              Developed for the NASA Space Apps Challenge 2026. NASA OSDR and the Human Research Roadmap provide research context.
             </p>
             <div className="pt-1 flex flex-col gap-2 text-xs text-[#7AD7EA] font-mono-tech">
               <a

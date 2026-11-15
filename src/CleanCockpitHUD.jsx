@@ -86,7 +86,7 @@ export default function CleanCockpitHUD({
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-[#E4783B] animate-ping" />
               <span className="text-xs font-bold text-[#EBEBEB] tracking-wider font-titan">
-                FLIGHT SURGEON CORE
+                MISSION SIMULATION
               </span>
             </div>
             <span className="text-[9px] text-[#E4783B] px-2 py-0.5 rounded bg-[#252121] border border-[#E4783B]/40 font-mono-tech font-bold">
@@ -125,7 +125,7 @@ export default function CleanCockpitHUD({
             <div className="p-3 rounded-xl bg-emerald-950/70 border border-emerald-500/60 flex items-center justify-between text-xs font-bold text-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
               <span className="flex items-center gap-2 font-cairo text-[11px]">
                 <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
-                تم تفعيل البروتوكول واستقرار الدورة!
+                تم تشغيل محاكاة البروتوكول
               </span>
               <button
                 onClick={onResetCountermeasure}

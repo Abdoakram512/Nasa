@@ -71,7 +71,7 @@ export default function NasaCitationModal({ reference, isOpen, onClose }) {
                 <p className="text-slate-300 text-[11px]">{reference.microgravityDriftRate}</p>
               </div>
               <div className="pt-2 border-t border-slate-800">
-                <span className="text-amber-400 text-[10px] block">FLIGHT SURGEON THRESHOLD RULE</span>
+                <span className="text-amber-400 text-[10px] block">SCENARIO THRESHOLD</span>
                 <p className="text-amber-200/90 text-[11px]">{reference.thresholdRule}</p>
               </div>
             </div>
@@ -89,7 +89,7 @@ export default function NasaCitationModal({ reference, isOpen, onClose }) {
           {/* Footer Actions */}
           <div className="flex items-center justify-between pt-3 border-t border-slate-800">
             <span className="text-[10px] text-slate-500 font-mono">
-              Validated against NASA Spaceflight Human-System Standard (NASA-STD-3001)
+              NASA-STD-3001 is a reference for mission context
             </span>
             <a
               href={reference.officialUrl}

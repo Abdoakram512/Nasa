@@ -523,7 +523,7 @@ export default function PlanetsPage({ setMissionDay, setCurrentPhase }) {
                         <div className="flex items-center gap-1.5">
                           <ShieldAlert size={13} className="text-[#E4783B]" />
                           <span className="text-[10px] font-mono-tech font-bold text-[#F4F7FC] uppercase">
-                            NASA CLINICAL HAZARD MATRIX:
+                            MISSION ENVIRONMENT & HEALTH CONTEXT
                           </span>
                         </div>
                         <div>

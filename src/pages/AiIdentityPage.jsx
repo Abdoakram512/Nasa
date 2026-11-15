@@ -16,9 +16,8 @@ export default function AiIdentityPage({
   const [messages, setMessages] = useState([
     {
       sender: 'ai',
-      text: `مرحباً بك، سيادة القائد. أنا نظام AURA (Autonomous Ultra-Deep-Space Resiliency Agent)، طبيب الفضاء الجوي المستقل على متن مركبة أوريون. أعمل عبر النواة العصبية المحلية دون الحاجة لاتصال الأرض، وأراقب قياساتك الحيوية لحظة بلحظة وفق معايير NASA-STD-3001. كيف يمكنني مساندة جاهزيتك للمهمة اليوم؟`,
+      text: `أهلًا، أنا AURA، دليل المهمة. الردود هنا مُعدّة مسبقًا وبتشرح مؤشرات الطاقم في المحاكاة. تقدر تجرّب موديلات توقع النبض في Experimental forecast داخل Workspace.`,
       citations: ['NASA-STD-3001 Vol 1', 'HRP-BHP-2026', 'ExMC Local Core'],
-      prescription: null
     }
   ]);
   const [inputQuery, setInputQuery] = useState('');
@@ -31,15 +30,15 @@ export default function AiIdentityPage({
     },
     {
       title: "تقييم انتقال السوائل الرأسي ومتلازمة SANS",
-      query: "حلل خطر انتفاخ العصب البصري (SANS) ومؤشر انتقال السوائل للرأس حالياً."
+      query: "إيه اللي بتعرضه بطاقة SANS في محاكاة الطاقم؟"
     },
     {
       title: "توليد تعديل تدريب ARED وتوازن الكالسيوم",
-      query: "استخرج وصفة تمرين الأثقال الفضائية ARED وجرعة المحاليل لمنع تآكل العظام."
+      query: "إزاي سيناريو المهمة بيعرض كثافة العظام وجهاز ARED؟"
     },
     {
       title: "تقييم بروتوكول انقطاع الاتصال اللاسلكي",
-      query: "ما هي التدخلات المستقلة المجدولة في حال حدوث عاصفة شمسية وانقطاع تام مع هيوستن؟"
+      query: "إيه حالة الاتصال في محاكاة المهمة؟"
     }
   ];
 
@@ -58,36 +57,23 @@ export default function AiIdentityPage({
     setTimeout(() => {
       let aiResponse = '';
       let citations = [];
-      let prescription = null;
 
       const q = query.toLowerCase();
       if (q.includes('hrv') || q.includes('قلب') || q.includes('نبض') || q.includes('heart') || q.includes('variability')) {
-        aiResponse = `تحليل القياسات الحيوية (اليوم ${telemetry.missionDay}): معدل تقلب نبضك (HRV) حالياً هو ${telemetry.currentHRV} ms (بانحراف قدره ${telemetry.hrvDriftPct}% عن خط الأساس). في انعدام الجاذبية، يصعد نحو لترين من سوائل الجسم نحو الصدر والرأس؛ مما يُلغي التدرج الهيدروستاتيكي الطبيعي ويثبط نغمة العصب الحائر الباراسيمبثاوي. نظراً لتأخير الاتصال بالأرض (${telemetry.commDelayMinutes} دقيقة)، نوصي بتفعيل التدخل الفوري: تمرين دراجة CEVIS لمدة 20 دقيقة، مع شرب 750 مل محلول أملاح متوازن الضغط الأسموزي.`;
+        aiResponse = `في محاكاة اليوم ${telemetry.missionDay}، تقلب معدل القلب (HRV) للطاقم هو ${telemetry.currentHRV} ms. استخدم الـWorkspace لمراجعة تسجيلات القلب الفعلية وتجربة التوقعات.`;
         citations = ['NASA-STD-3001 Vol 1', 'HRP-47052', 'LSDA-ISS-CV'];
-        prescription = {
-          title: "بروتوكول دعم الدورة وتوازن البلازما",
-          items: ["20 دقيقة CEVIS عند 75% VO2 max", "شرب 750 مل محلول كهارل متوازن", "30 دقيقة ضغط سلبي سفلي LBNP (-30 mmHg)"]
-        };
       } else if (q.includes('عظام') || q.includes('bone') || q.includes('ared') || q.includes('calcium') || q.includes('كالسيوم')) {
-        aiResponse = `التقييم العظمي والاستقلابي: نسبة بقاء كثافة العظام (BMD) حالياً هي ${telemetry.bmdRetention}% (إجمالي الفقد: -${telemetry.bmdLoss}%). وفق بروتوكول LSDA-BMD-ISS-04، تم رفع أحمال تدريب القرفصاء والرفعة الميتة على جهاز المقاومة الهيدروليكي ARED بنسبة 12.5%، مع زيادة الحصة المائية اليومية بمقدار 600 مل لتخفيف تركيز الكالسيوم في البول وتجنب الحصوات الكلوية.`;
+        aiResponse = `مؤشر كثافة العظام في سيناريو الطاقم هو ${telemetry.bmdRetention}%. تقدر تستكشف محاكاة جهاز المقاومة من الـWorkspace.`;
         citations = ['LSDA-BMD-ISS-04', 'NASA HRP Bone Evidence', 'NASA-STD-3001'];
-        prescription = {
-          title: "بروتوكول ARED لحماية العظام الإسفنجية",
-          items: ["زيادة أحمال ARED Squat بنسبة +12.5%", "جرعة 800 IU فيتامين D3 + 100mcg K2", "+600 مل ترطيب إضافي لحماية الكلى"]
-        };
       } else if (q.includes('sans') || q.includes('عين') || q.includes('بصر') || q.includes('vision') || q.includes('optic') || q.includes('سوائل')) {
-        aiResponse = `مصفوفة فحص SANS والضغط القحفي: يبلغ قطر غمد العصب البصري (ONSD) حالياً 5.6 مم مع مؤشر احتقان رأسي +${telemetry.fluidShiftIndex}%. نوصي ببدء جلسة تفريغ الضغط الرأسي عبر جهاز الضغط السالب للأطراف السفلية (LBNP) لمدة 30 دقيقة لسحب لتر من الدم نحو الساقين واستعادة الضغط الطبيعي لشبكية العين.`;
+        aiResponse = `مؤشر انتقال السوائل نحو الرأس في سيناريو الطاقم هو ${telemetry.fluidShiftIndex}%. بطاقة SANS في الـWorkspace بتعرض سياق الحالة المُحاكاة.`;
         citations = ['HRP-SANS-4819', 'NASA-STD-3001 Rev B'];
-        prescription = {
-          title: "بروتوكول LBNP لتخفيف ضغط الرأس والعين",
-          items: ["جلسة LBNP لمدة 30 دقيقة عند -30 mmHg", "فحص قاع العين بالسونار المحمول", "ارتداء عدسات تصحيح انكسار مؤقتة"]
-        };
       } else {
-        aiResponse = `تشخيص نظام AURA الطبي (اليوم ${telemetry.missionDay}): مؤشر حيوية الطاقم العام هو ${telemetry.overallHealthIndex}/100، والحالة النشطة هي (${telemetry.riskLevel}). وضع الاتصال بالأرض: ${isCommBlackout ? 'انقطاع كامل (تفعيل الاستقلالية السريرية التامة)' : 'تأخير لاسلكي متوقع'}. جميع التدخلات موجهة بالذكاء الاصطناعي السريري وفق مكتبة معايير ناسا الفضائية.`;
+        aiResponse = `دي لقطة من محاكاة اليوم ${telemetry.missionDay}. حالة الاتصال في السيناريو: ${isCommBlackout ? 'انقطاع مُحاكى' : 'الاتصال متاح في السيناريو'}. اسأل عن القلب أو العظام أو العين لاستكشاف الردود الجاهزة.`;
         citations = ['NASA-STD-3001', 'NASA IMM Model'];
       }
 
-      setMessages([...newMessages, { sender: 'ai', text: aiResponse, citations, prescription }]);
+      setMessages([...newMessages, { sender: 'ai', text: aiResponse, citations }]);
       setIsGenerating(false);
       spaceAudio.playBeep(1600, 0.1);
     }, 600);
@@ -101,22 +87,22 @@ export default function AiIdentityPage({
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-[#E4783B] animate-ping" />
             <span className="text-[10px] font-mono-tech text-[#E4783B] uppercase tracking-widest">
-              AUTONOMOUS AI FLIGHT SURGEON • ExMC CDSS
+              SCRIPTED MISSION GUIDE
             </span>
           </div>
           <h1 className="font-titan text-3xl sm:text-4xl lg:text-5xl text-[#EBEBEB] uppercase leading-tight tracking-wide">
-            AURA NEURAL CLINICAL CORE
+            AURA MISSION GUIDE
           </h1>
           <p className="text-xs sm:text-sm text-[#ACACAC] leading-relaxed">
-            Continuous biometric telemetry evaluation against NASA-STD-3001 standards. Running 100% offline on local spacecraft avionics during Deep Space Communication Blackout.
+            Explore scripted responses about simulated crew telemetry. Experimental forecasts run in the Workspace.
           </p>
         </div>
 
         {/* Live Status Pill Card */}
         <div className="p-4 rounded-2xl bg-[#0D0B0A] border border-white/10 space-y-2 text-xs font-mono-tech shrink-0 w-full md:w-64">
           <div className="flex items-center justify-between">
-            <span className="text-[#808080]">NEURAL ENGINE</span>
-            <span className="text-emerald-400 font-bold">ONLINE</span>
+            <span className="text-[#808080]">GUIDE MODE</span>
+            <span className="text-emerald-400 font-bold">SCRIPTED</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-[#808080]">COMM-LAG</span>
@@ -125,7 +111,7 @@ export default function AiIdentityPage({
           <div className="flex items-center justify-between">
             <span className="text-[#808080]">BLACKOUT MODE</span>
             <span className={isCommBlackout ? 'text-amber-400 font-bold' : 'text-[#ACACAC]'}>
-              {isCommBlackout ? 'AUTONOMOUS' : 'STANDBY'}
+              {isCommBlackout ? 'SIMULATED BLACKOUT' : 'SCENARIO READY'}
             </span>
           </div>
           <button
@@ -175,7 +161,7 @@ export default function AiIdentityPage({
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="font-titan text-base text-[#F4F7FC] tracking-wide uppercase">
-                  AURA SURGEON INTERACTIVE DIALOGUE
+                  AURA Mission Guide
                 </h3>
                 <span className="text-[9px] px-2 py-0.5 rounded-full bg-[#7AD7EA]/20 text-[#7AD7EA] font-mono-tech font-bold">
                   NASA-STD-3001
@@ -202,7 +188,7 @@ export default function AiIdentityPage({
         {/* Quick Clinical Prompts Bar */}
         <div className="p-3 bg-[#0D1728]/80 border-b border-[rgba(180,210,235,0.1)] flex items-center gap-2 overflow-x-auto no-scrollbar">
           <span className="text-[10px] font-mono-tech text-[#98A7BD] uppercase shrink-0 pl-1">
-            QUICK CLINICAL INQUIRIES:
+            MISSION QUESTIONS:
           </span>
           {quickPrompts.map((p, idx) => (
             <button
@@ -231,42 +217,6 @@ export default function AiIdentityPage({
               >
                 <p className="leading-relaxed text-xs font-cairo text-[#F4F7FC]">{msg.text}</p>
 
-                {/* Prescription Deck Card if generated by AI */}
-                {msg.prescription && (
-                  <div className="mt-3.5 p-3.5 rounded-xl bg-[#132238] border border-[#7AD7EA]/40 text-right space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-[#7AD7EA] font-titan tracking-wider uppercase">
-                        {msg.prescription.title}
-                      </span>
-                      <Zap size={14} className="text-[#7AD7EA]" />
-                    </div>
-                    <ul className="space-y-1 text-[11px] text-[#C7D2E3] font-cairo">
-                      {msg.prescription.items.map((it, i) => (
-                        <li key={i} className="flex items-center gap-1.5 justify-end">
-                          <span>{it}</span>
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#7AD7EA]" />
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* One-click Execute Protocol Button */}
-                    {!countermeasureApplied ? (
-                      <button
-                        onClick={onApplyCountermeasure}
-                        className="w-full mt-2 py-2.5 px-3 rounded-lg bg-gradient-to-r from-[#E4783B] to-[#d46a30] hover:opacity-95 text-[#07111F] font-black text-xs font-cairo transition-all shadow-[0_0_15px_rgba(228,120,59,0.35)] flex items-center justify-center gap-2"
-                      >
-                        <Zap size={14} />
-                        <span>تطبيق هذه الوصفة السريرية فوراً</span>
-                      </button>
-                    ) : (
-                      <div className="mt-2 py-2 px-3 rounded-lg bg-emerald-950/80 border border-emerald-500/50 flex items-center justify-center gap-2 text-xs font-bold text-emerald-300 font-cairo">
-                        <CheckCircle2 size={14} className="text-emerald-400" />
-                        <span>تم تطبيق البروتوكول واستقرار المؤشرات الحيوية!</span>
-                      </div>
-                    )}
-                  </div>
-                )}
-
                 {/* Citations Footer */}
                 {msg.citations && msg.citations.length > 0 && (
                   <div className="mt-3 pt-2 border-t border-[rgba(180,210,235,0.1)] flex flex-wrap gap-1 justify-end">
@@ -286,7 +236,7 @@ export default function AiIdentityPage({
 
           {isGenerating && (
             <div className="flex items-center gap-2 text-[#E4783B] text-xs font-mono-tech justify-end">
-              <span>AURA is analyzing astronaut vitals against NASA-STD-3001...</span>
+              <span>Loading the scripted mission response…</span>
               <span className="w-2 h-2 rounded-full bg-[#E4783B] animate-ping" />
             </div>
           )}

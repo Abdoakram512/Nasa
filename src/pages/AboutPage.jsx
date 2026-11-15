@@ -14,10 +14,10 @@ export default function AboutPage() {
             ABOUT ASTROVITALS • NASA SPACE APPS 2026
           </span>
           <h1 className="font-titan text-2xl sm:text-4xl lg:text-5xl text-[#F4F7FC] uppercase leading-tight tracking-wide">
-            REVOLUTIONIZING DEEP SPACE ASTRONAUT HEALTHCARE
+            MONITORING HEALTH ON A SIMULATED SPACE MISSION
           </h1>
           <p className="text-xs sm:text-sm text-[#C7D2E3] leading-relaxed">
-            AstroVitals is an autonomous bio-digital twin and clinical decision support system (CDSS) engineered for deep space exploration missions where real-time medical evacuation to Earth is physically impossible.
+            AstroVitals is a NASA Space Apps prototype for reviewing vital signs in the context of a simulated deep-space mission. The Workspace combines Earth hospital recordings, a signal event log, and experimental heart-rate forecasts.
           </p>
         </div>
       </section>
@@ -103,7 +103,7 @@ export default function AboutPage() {
             ENGINEERING & MEDICAL ARCHITECTURE
           </span>
           <h2 className="font-titan text-2xl text-[#F4F7FC] uppercase tracking-wide">
-            HOW ASTROVITALS SOLVES DEEP SPACE MEDICAL AUTONOMY
+            HOW ASTROVITALS WORKS
           </h2>
         </div>
 
@@ -111,30 +111,30 @@ export default function AboutPage() {
           <div className="space-y-2">
             <div className="font-bold text-[#F4F7FC] text-sm font-sans flex items-center gap-2">
               <span className="w-5 h-5 rounded-full bg-[#7AD7EA]/20 text-[#7AD7EA] font-mono-tech text-xs flex items-center justify-center font-bold">1</span>
-              <span>Multi-Sensor Telemetry Ingestion</span>
+              <span>Recorded Vital Signs</span>
             </div>
             <p>
-              Integrates Astroskin smart undershirt continuous ECG, portable ocular ultrasound (Butterfly iQ), and i-STAT blood/urine electrolyte analyzers into an onboard unified data matrix.
+              Review heart rate, pulse rate, breathing rate and oxygen saturation from PhysioNet BIDMC recordings.
             </p>
           </div>
 
           <div className="space-y-2">
             <div className="font-bold text-[#F4F7FC] text-sm font-sans flex items-center gap-2">
               <span className="w-5 h-5 rounded-full bg-[#7E78C9]/20 text-[#7E78C9] font-mono-tech text-xs flex items-center justify-center font-bold">2</span>
-              <span>Offline Edge Neural Core (AURA)</span>
+              <span>Experimental Forecasts</span>
             </div>
             <p>
-              Runs deterministic heuristics and neural decision pipelines locally on the spacecraft’s avionics, compliant with NASA-STD-3001 Vol 1 Rev B threshold rules without requiring Earth connectivity.
+              Ridge, an MLP and IBM Granite TinyTimeMixer forecast heart rate in the browser. Compare their estimates with recorded readings where available.
             </p>
           </div>
 
           <div className="space-y-2">
             <div className="font-bold text-[#F4F7FC] text-sm font-sans flex items-center gap-2">
               <span className="w-5 h-5 rounded-full bg-[#E4783B]/20 text-[#E4783B] font-mono-tech text-xs flex items-center justify-center font-bold">3</span>
-              <span>Closed-Loop Countermeasures</span>
+              <span>Mission Simulation</span>
             </div>
             <p>
-              Prescribes and regulates Advanced Resistive Exercise Device (ARED) loading, Lower Body Negative Pressure (LBNP) protocols, and electrolyte oral rehydration therapies dynamically.
+              Explore a simulated crew and compare available readings with an explicitly labeled signal-dropout scenario.
             </p>
           </div>
         </div>
@@ -144,13 +144,13 @@ export default function AboutPage() {
             to="/features"
             className="px-6 py-2.5 rounded-full bg-[#E4783B] text-[#07111F] font-bold text-xs tracking-wider transition-all hover:bg-[#d46a30] shadow-[0_0_18px_rgba(228,120,59,0.3)]"
           >
-            EXPLORE CLINICAL FEATURES
+            EXPLORE MISSION FEATURES
           </Link>
           <Link
             to="/ai-identity"
             className="px-6 py-2.5 rounded-full bg-[#182A44] text-[#F4F7FC] border border-[#7AD7EA]/30 font-bold text-xs tracking-wider transition-all hover:bg-[#1f3657]"
           >
-            CONSULT AURA AI SURGEON
+            CONSULT AURA Mission Guide
           </Link>
         </div>
       </section>

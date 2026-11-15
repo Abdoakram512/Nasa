@@ -75,7 +75,7 @@ export default function WorkspacePage({
             </strong>
           </div>
           <div>
-            <span className="text-[#98A7BD] block text-[9px]">PHYSIOLOGICAL RISK</span>
+            <span className="text-[#98A7BD] block text-[9px]">SCENARIO STATUS</span>
             <strong className="text-xs px-2 py-0.5 rounded font-bold" style={{ backgroundColor: `${telemetry.riskColor}22`, color: telemetry.riskColor, border: `1px solid ${telemetry.riskColor}55` }}>
               {telemetry.riskLevel}
             </strong>
@@ -147,7 +147,7 @@ export default function WorkspacePage({
         <div className={`lg:col-span-4 space-y-3 ${activeMobileTab === 'telemetry' ? 'block' : 'hidden lg:block'}`}>
           <div className="flex items-center justify-between pb-1">
             <span className="text-[10px] font-mono-tech text-[#E4783B] uppercase tracking-wider">
-              BIOMEDICAL INSTRUMENTATION
+              SIMULATED CREW TELEMETRY
             </span>
             <span className="text-[9px] font-mono-tech text-[#808080]">NASA-STD-3001</span>
           </div>
@@ -219,13 +219,13 @@ export default function WorkspacePage({
                 className="w-full min-h-[44px] py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#E4783B] to-[#A64D2D] hover:opacity-95 text-[#0D0B0A] font-black text-xs font-cairo transition-all shadow-[0_0_20px_rgba(228,120,59,0.3)] flex items-center justify-center gap-2"
               >
                 <Zap size={14} />
-                <span>تطبيق بروتوكول التدخل الفضائي</span>
+                <span>محاكاة بروتوكول المهمة</span>
               </button>
             ) : (
               <div className="p-2.5 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-xs font-bold text-emerald-300 flex items-center justify-between">
                 <span className="flex items-center gap-1.5 font-cairo text-[11px]">
                   <CheckCircle2 size={15} />
-                  تم تفعيل البروتوكول واستقرار المؤشرات!
+                  تم تشغيل محاكاة البروتوكول
                 </span>
                 <button
                   onClick={handleResetCountermeasure}
@@ -241,11 +241,11 @@ export default function WorkspacePage({
           <div className="p-4 rounded-2xl bg-[#171311] border border-white/[0.08] space-y-2.5">
             <div className="flex items-center justify-between">
               <span className="font-titan text-xs text-[#EBEBEB] uppercase">DSN TELEMETRY PACKET</span>
-              <span className="text-[9px] font-mono-tech text-cyan-400">50 KB ENCODED</span>
+              <span className="text-[9px] font-mono-tech text-cyan-400">SIMULATED</span>
             </div>
 
             <p className="text-[11px] text-[#ACACAC] leading-relaxed font-sans">
-              Encrypted biometric diagnostic telemetry ready for Deep Space Network transmission to Houston Ground Control.
+              Demo of a Deep Space Network transmission. The action updates this simulation locally.
             </p>
 
             <button
@@ -257,7 +257,7 @@ export default function WorkspacePage({
               className="w-full min-h-[44px] py-2 rounded-xl bg-[#252121] hover:bg-[#2e2927] text-[#EBEBEB] border border-white/10 text-xs font-mono-tech font-bold transition-all flex items-center justify-center gap-2"
             >
               <Radio size={13} className="text-[#E4783B]" />
-              <span>{packetSent ? 'PACKET DISPATCHED TO DSN!' : 'TRANSMIT PACKET TO EARTH'}</span>
+              <span>{packetSent ? 'SIMULATED TRANSMISSION COMPLETE' : 'SIMULATE DSN TRANSMISSION'}</span>
             </button>
           </div>
 
@@ -270,7 +270,7 @@ export default function WorkspacePage({
             className="w-full min-h-[44px] py-3 rounded-2xl bg-[#171311] hover:bg-[#252121] text-[#E4783B] border border-[#E4783B]/40 text-xs font-mono-tech font-bold transition-all shadow-[0_0_15px_rgba(228,120,59,0.2)] flex items-center justify-center gap-2"
           >
             <Bot size={15} />
-            <span>CONSULT AURA FLIGHT SURGEON</span>
+            <span>CONSULT AURA Mission Guide</span>
           </button>
         </div>
       </section>

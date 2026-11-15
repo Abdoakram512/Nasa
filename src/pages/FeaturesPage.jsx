@@ -10,65 +10,45 @@ export default function FeaturesPage() {
   const featureList = [
     {
       id: 'aura-ai',
-      badge: 'CLINICAL AI COPILOT',
-      title: 'AURA Autonomous AI Flight Surgeon',
-      subtitle: 'NASA Exploration Medical Capability (ExMC) Local Neural Engine',
-      description: 'An onboard clinical decision support system executing deterministic threshold algorithms and neural heuristics directly on spacecraft avionics with zero dependency on Earth connectivity.',
-      bullets: [
-        'Deterministic evaluation against NASA-STD-3001 Vol 1 thresholds',
-        'Dynamic clinical triage across cardiovascular, skeletal, and ocular domains',
-        'Automatic countermeasure prescription generation (ARED, LBNP, hydration)',
-        'Full bilingual support in professional Arabic and technical English'
-      ],
+      badge: "MISSION GUIDE",
+      title: "AURA Mission Guide",
+      subtitle: "Scripted mission explanations",
+      description: "Explore simulated heart, bone and eye indicators through preset responses.",
+      bullets: ["Questions about the current mission scenario", "Research references alongside the responses"],
       linkText: 'Open AURA Console',
       linkUrl: '/ai-identity',
       image: assetPath('astronaut_portrait.jpg')
     },
     {
       id: 'bio-twin',
-      badge: 'DIAGNOSTIC INSTRUMENTATION',
-      title: 'Bio-Digital Twin & Diagnostic Scanners',
-      subtitle: 'Multi-Sensor Spaceflight Physiological Ingestion',
-      description: 'Real-time telemetry tracking calibrated from NASA Life Sciences Data Archive (LSDA) and ISS human flight data, providing actionable insights into microgravity-induced bodily adaptation.',
-      bullets: [
-        'Color Doppler Echocardiography trace for 0-G cephalad fluid redistribution (~2L headward)',
-        'High-resolution Micro-CT trabecular bone micro-architecture resorption matrix',
-        'Portable Ocular Ultrasound scanner tracking Optic Nerve Sheath Diameter (ONSD > 5.8 mm)',
-        'Continuous Astroskin 3-lead ECG, HRV RMSSD decay, and arterial pressure monitoring'
-      ],
-      linkText: 'Launch Live Telemetry Deck',
+      badge: "RECORDED TELEMETRY",
+      title: "Vital Signs & Forecasts",
+      subtitle: "PhysioNet BIDMC replay",
+      description: "Review Earth ICU recordings, jump to signal events and compare experimental forecasts.",
+      bullets: ["Four recorded vital signs", "Missing readings and simulated signal dropout", "Ridge, MLP and IBM Granite forecasts"],
+      linkText: 'Open Telemetry Workspace',
       linkUrl: '/workspace',
       image: assetPath('hemodynamics_scan.jpg')
     },
     {
       id: 'eva-3d',
-      badge: 'INTERACTIVE VIEWPORT',
-      title: '3D Zero-G EVA Astronaut & Anatomical X-Ray',
-      subtitle: 'Real-Time WebGL Zero-Gravity Biomechanical Simulation',
-      description: 'An interactive Three.js 3D model of the astronaut floating weightlessly in deep space, featuring touch and mouse 360° orbital manipulation and anatomical X-Ray bio-scan mode.',
-      bullets: [
-        '360° orbital rotation with inertia damping and touch-drag support',
-        'Anatomical X-Ray scan rendering bioluminescent pulsating heart synced to live BPM',
-        'Spinal column color-coded dynamically based on bone mineral density retention',
-        'Chest-mounted Display and Control Module (DCM) with live tri-color telemetry LEDs'
-      ],
+      badge: "INTERACTIVE VIEWPORT",
+      title: "3D Astronaut & Anatomy",
+      subtitle: "Interactive mission visualization",
+      description: "Rotate the astronaut and explore the anatomy of the simulated crew member.",
+      bullets: ["Touch and mouse controls", "Animated anatomy and simulated indicators"],
       linkText: 'Inspect 3D Spacesuit',
       linkUrl: '/workspace',
       image: assetPath('sans_scan.jpg')
     },
     {
       id: 'countermeasures',
-      badge: 'INTERVENTION PROTOCOLS',
-      title: 'NASA Countermeasure Flight Operations',
-      subtitle: 'ARED Resistive Pod & LBNP Autonomous Therapy',
-      description: 'Dynamic execution of targeted physiological countermeasures designed to arrest skeletal bone demineralization and prevent cardiovascular collapse upon planetary insertion.',
-      bullets: [
-        'Advanced Resistive Exercise Device (ARED) hydraulic loading adjustments (+12.5% deadlift/squat)',
-        'Lower Body Negative Pressure (LBNP) 30-minute decompression sessions at -30 mmHg',
-        'Hypercalciuria and renal nephrolithiasis mitigation via targeted oral electrolyte rehydration',
-        'Instant one-click protocol execution with live telemetry recovery verification'
-      ],
-      linkText: 'Execute Countermeasures',
+      badge: "MISSION OPERATIONS",
+      title: "Countermeasure Simulation",
+      subtitle: "Scenario controls",
+      description: "Try a simulated exercise protocol and observe the change in the scenario.",
+      bullets: ["Simulated resistance exercise", "Local scenario state updates"],
+      linkText: 'Open Mission Simulation',
       linkUrl: '/workspace',
       image: assetPath('ared_exercise.jpg')
     }
@@ -80,13 +60,13 @@ export default function FeaturesPage() {
       <section className="p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-[32px] cinematic-card-bg border border-[rgba(180,210,235,0.14)] shadow-2xl relative overflow-hidden">
         <div className="relative z-10 max-w-2xl space-y-2 sm:space-y-3">
           <span className="text-[10px] font-mono-tech text-[#7AD7EA] uppercase tracking-widest block">
-            CLINICAL SPECIFICATIONS • NASA-STD-3001
+            NASA SPACE APPS PROTOTYPE
           </span>
           <h1 className="font-titan text-2xl sm:text-4xl lg:text-5xl text-[#F4F7FC] uppercase leading-tight tracking-wide">
-            EXPLORE PLATFORM CLINICAL FEATURES
+            EXPLORE MISSION FEATURES
           </h1>
           <p className="text-xs sm:text-sm text-[#C7D2E3] leading-relaxed">
-            Every instrument, diagnostic scanner, and autonomous intervention protocol is engineered specifically for long-duration deep space exploration.
+            Explore the recording viewer, experimental forecasts and interactive mission simulation.
           </p>
         </div>
       </section>
