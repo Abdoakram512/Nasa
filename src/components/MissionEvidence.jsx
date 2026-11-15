@@ -1,5 +1,6 @@
 import { Database, Orbit, Radio, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import benchmark from '../data/vitalDbBenchmark.json';
 
 const stops = [
   {
@@ -18,6 +19,8 @@ const stops = [
         'https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/'],
       ['NASA Open Science Data Repository', 'We used OSDR as a research reference for the spaceflight context. The recorded readings displayed in the Workspace come from BIDMC.',
         'https://science.nasa.gov/biological-physical/data/osdr/'],
+      ['NASA DONKI', 'The Planets page displays archived geomagnetic storm observations from May 2024. The Kp index describes activity at Earth and provides environmental context for the mission scenario.',
+        'https://ccmc.gsfc.nasa.gov/tools/DONKI/'],
     ],
   },
   {
@@ -78,6 +81,26 @@ export default function MissionEvidence() {
           </section>
         ))}
       </div>
+      <details className="mt-6 rounded-xl border border-white/10 bg-[#132238] p-4 text-[#F4F7FC]">
+        <summary className="cursor-pointer font-bold">VitalDB external benchmark</summary>
+        <p className="my-3 text-sm text-[#C7D2E3]">
+          {benchmark.cases} terrestrial surgical cases · {benchmark.observedTargets.toLocaleString('en-US')} observed targets.
+          Errors are in beats per minute, with equal weight per case.
+        </p>
+        <table className="w-full text-left text-sm">
+          <thead><tr><th scope="col">Method</th><th scope="col">MAE</th><th scope="col">RMSE</th></tr></thead>
+          <tbody>{[['persistence', 'Last reading'], ['ridge', 'Ridge'], ['neural', 'MLP'], ['blend', 'Blend']].map(([key, name]) => (
+            <tr key={key} className="border-t border-white/10">
+              <th scope="row" className="py-1.5">{name}</th>
+              <td>{benchmark.metrics[key].mae_bpm.toFixed(3)}</td>
+              <td>{benchmark.metrics[key].rmse_bpm.toFixed(3)}</td>
+            </tr>
+          ))}</tbody>
+        </table>
+      </details>
+      <Link to="/planets" className="mt-4 mr-4 inline-flex min-h-[44px] items-center text-sm font-bold text-[#7AD7EA] underline">
+        Explore the space weather archive
+      </Link>
       <Link to="/workspace" className="mt-6 inline-flex min-h-[44px] items-center text-sm font-bold text-[#7AD7EA] underline">
         Explore recorded telemetry in the Workspace
       </Link>

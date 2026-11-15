@@ -10,6 +10,7 @@ import {
 import ThreeJsSolarSystem from '../components/ThreeJsSolarSystem';
 import CockpitModeHUD from '../components/CockpitModeHUD';
 import PlanetComparisonModal from '../components/PlanetComparisonModal';
+import SpaceWeatherArchive from '../components/SpaceWeatherArchive';
 import { CELESTIAL_BODIES } from '../data/solarSystemData';
 import { spaceAudio } from '../utils/spaceAudio';
 
@@ -638,6 +639,7 @@ export default function PlanetsPage({ setMissionDay, setCurrentPhase }) {
       {/* ─────────────────────────────────────────────────────────────
           3. COMPARISON MODAL
       ───────────────────────────────────────────────────────────── */}
+      <SpaceWeatherArchive />
       <PlanetComparisonModal
         isOpen={isCompareOpen}
         onClose={() => setIsCompareOpen(false)}
