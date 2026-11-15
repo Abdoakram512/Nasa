@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldAlert, Activity, Bone, Eye, Radio, CheckCircle2, Bot, ArrowRight, Database } from 'lucide-react';
 import { NASA_REFERENCES } from '../data/nasaKnowledgeBase';
+import MissionEvidence from '../components/MissionEvidence';
 
 export default function AboutPage() {
   return (
@@ -154,7 +155,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. Scientific Grounding & Citations */}
+      <MissionEvidence />
+
+      {/* Scientific Grounding & Citations */}
       <section className="space-y-4">
         <h3 className="text-xs font-mono-tech text-[#98A7BD] uppercase tracking-wider">
           GROUNDED SCIENTIFIC STANDARDS & ARCHIVES
