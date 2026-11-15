@@ -10,6 +10,8 @@ const stops = [
         'https://physionet.org/content/bidmc/1.0.0/'],
       ['VitalDB', 'We used 40 independent surgical cases to test the BIDMC-trained forecasts. Carrying forward the last reading had the lowest mean absolute error on the observed targets.',
         'https://physionet.org/content/vitaldb/1.0.0/'],
+      ['WESAD', 'A wearable-sensor study with labeled laboratory stress and affect conditions. Included as a research reference for a separate stress-analysis experiment.',
+        'https://archive.ics.uci.edu/dataset/465/wesad'],
     ],
   },
   {
@@ -17,10 +19,18 @@ const stops = [
     entries: [
       ['NASA Space Apps Challenge', 'The challenge brief defined the project’s focus on collecting and reviewing health indicators during long missions.',
         'https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/'],
-      ['NASA Open Science Data Repository', 'We used OSDR as a research reference for the spaceflight context. The recorded readings displayed in the Workspace come from BIDMC.',
+      ['NASA Open Science Data Repository', 'We use OSDR for spaceflight research context. The OSD-575 Inspiration4 study includes a cardiovascular serum assay, while Workspace telemetry comes from BIDMC.',
         'https://science.nasa.gov/biological-physical/data/osdr/'],
+      ['Inspiration4 cardiovascular assay · OSD-575', 'A public table of laboratory assay results from the Inspiration4 study, used here as a reference for the kinds of biological measurements collected in spaceflight research.',
+        'https://osdr.nasa.gov/bio/repo/data/studies/OSD-575'],
       ['NASA DONKI', 'The Planets page displays archived geomagnetic storm observations from May 2024. The Kp index describes activity at Earth and provides environmental context for the mission scenario.',
         'https://ccmc.gsfc.nasa.gov/tools/DONKI/'],
+      ['NASA Human Research Program', 'NASA’s research program provides context for the human health and performance risks explored in the mission simulation.',
+        'https://www.nasa.gov/hrp/'],
+      ['NASA Evidence Reports', 'Evidence reviews explain the research behind spaceflight risks such as cardiovascular adaptation, bone loss and SANS.',
+        'https://humanresearchroadmap.nasa.gov/evidence/'],
+      ['NASA Open APIs', 'We used the DONKI geomagnetic storm endpoint to prepare the historical snapshot displayed on the Planets page.',
+        'https://api.nasa.gov/'],
     ],
   },
   {

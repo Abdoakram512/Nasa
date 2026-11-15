@@ -9,6 +9,9 @@
 | [NASA DONKI geomagnetic storms](https://ccmc.gsfc.nasa.gov/tools/DONKI/) | Historical May 10–12, 2024 Earth geomagnetic events with NOAA Kp observations. Observations attached to an event may extend beyond its start-date query window. | Static snapshot in `src/data/donkiStorms.json` powers the Planets archive. Preserves UTC timestamps, original Kp values and source event links. | Public [NASA API documentation](https://api.nasa.gov/). |
 | [VitalDB](https://physionet.org/content/vitaldb/1.0.0/) | 40 terrestrial surgical cases from the Solar8000/HR track. | Offline test of BIDMC-trained models. The About page displays aggregate metrics on observed targets from `src/data/vitalDbBenchmark.json`. | Public dataset. |
 | Live device | Future sensor interface. | `LIVE` is reserved in the schema. | Pending hardware integration. |
+| [WESAD](https://archive.ics.uci.edu/dataset/465/wesad) | Labeled laboratory wearable recordings for stress and affect research. | Listed in About as a reference for a separate research experiment. A verified S11 file is available in the local source collection. | Scientific non-commercial use per the original dataset page. |
+| [NASA HRP](https://www.nasa.gov/hrp/) and [Evidence Reports](https://humanresearchroadmap.nasa.gov/evidence/) | Research plans and evidence reviews. | Context for mission health risks and the simulated crew scenarios. | Public reference documents. |
+| [NASA Open APIs](https://api.nasa.gov/) | Catalog of read APIs, including DONKI. | Source documentation for the historical DONKI snapshot. | The deployed viewer reads the checked-in snapshot. |
 
 BIDMC attribution: Pimentel, M. A. F., Johnson, A. E. W., Charlton, P. H., and Clifton, D. A. (2018). BIDMC PPG and Respiration Dataset, version 1.0.0, PhysioNet. [Dataset DOI](https://doi.org/10.13026/C2208R). The packaged example converts the original numerics CSV to JSON and represents missing cells as null.
 
